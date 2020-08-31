@@ -1,2 +1,3 @@
-# fiap73aoj.servicearchitecture
-Case "Netflix"
+## Trabalho de Conclusão de Disciplina 
+
+### SERVICES ARCHITECTURE / API / MOBILE ARCHITECTURE / TADEU D’ALESSANDRO BARBOSA

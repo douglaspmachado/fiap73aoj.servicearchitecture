@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RabbitMQ.Client" Version="6.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="App.Application">
+      <HintPath>..\..\API\App.Application\bin\Debug\netcoreapp2.1\App.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Infra">
+      <HintPath>..\..\API\App.Infra\bin\Debug\netcoreapp2.1\App.Infra.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

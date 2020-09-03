@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bus", "Bus", "{66B35C3C-6966-4586-B7BF-4AC521A44EDF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.ServiceBus", "App.ServiceBus\App.ServiceBus.csproj", "{3C2070A1-635C-4DAC-81AA-726CF26DD107}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C2070A1-635C-4DAC-81AA-726CF26DD107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C2070A1-635C-4DAC-81AA-726CF26DD107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C2070A1-635C-4DAC-81AA-726CF26DD107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C2070A1-635C-4DAC-81AA-726CF26DD107}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C2070A1-635C-4DAC-81AA-726CF26DD107} = {66B35C3C-6966-4586-B7BF-4AC521A44EDF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF9639E9-D71D-4D20-B195-1A50324CF4EE}
+	EndGlobalSection
+EndGlobal

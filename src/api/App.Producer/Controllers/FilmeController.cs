@@ -22,6 +22,7 @@ namespace App.Producer.Controllers
             this._serviceMessage = serviceBus;
         }
 
+        
 
         [HttpPost]
         [Route("Favoritar/{id}")]

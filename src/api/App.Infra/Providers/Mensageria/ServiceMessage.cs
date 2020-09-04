@@ -12,8 +12,8 @@ namespace App.Infra.Providers
 
         private readonly IConfiguration _config;
         private ConnectionFactory factory;
-        private IConnection connection;
-        private IModel channel;
+        private IConnection _connection;
+        private IModel _channel;
 
         public ServiceMessage(IConfiguration config)
         {
@@ -26,12 +26,11 @@ namespace App.Infra.Providers
 
             factory = new ConnectionFactory
             {
-                HostName = _config.GetConnectionString("rabbit_host_docker_tools"),
-                Port = int.Parse(_config.GetConnectionString("rabbit_porta")),
-                UserName = _config.GetConnectionString("rabbit_user"),
-                Password = _config.GetConnectionString("rabbit_pwd"),
-
-
+                HostName = _config["rabbit_host_docker_tools"],
+                Port = int.Parse(_config["rabbit_porta"]),
+                UserName = _config["rabbit_user"],
+                Password = _config["rabbit_pwd"],
+               
             };
 
         }
@@ -41,7 +40,7 @@ namespace App.Infra.Providers
 
             try
             {
-                connection = factory.CreateConnection();
+                _connection = factory.CreateConnection();
                 return true;
 
             }
@@ -58,9 +57,9 @@ namespace App.Infra.Providers
         {
             try
             {
-                if (connection.IsOpen)
+                if (_connection.IsOpen)
                 {
-                    connection.Close();
+                    _connection.Close();
                 }
 
             }
@@ -76,10 +75,10 @@ namespace App.Infra.Providers
         {
             try
             {
-                if (connection.IsOpen)
+                if (_connection.IsOpen)
                 {
 
-                    channel = connection.CreateModel();
+                    _channel = _connection.CreateModel();
 
                 }
 
@@ -94,7 +93,7 @@ namespace App.Infra.Providers
 
         public bool IsChannelOpen()
         {
-            return channel.IsOpen;
+            return _channel.IsOpen;
         }
 
         public bool SendMessageQueue(string pQueue, string pConteudoMsg)
@@ -103,12 +102,12 @@ namespace App.Infra.Providers
             {
 
 
-                if (channel.IsOpen)
+                if (_channel.IsOpen)
                 {
 
-                    channel = connection.CreateModel();
+                    _channel = _connection.CreateModel();
 
-                    channel.QueueDeclare(queue: pQueue,
+                    _channel.QueueDeclare(queue: pQueue,
                                          durable: false,
                                          exclusive: false,
                                          autoDelete: false,
@@ -120,8 +119,8 @@ namespace App.Infra.Providers
 
                     var body = Encoding.UTF8.GetBytes(message);
 
-                    channel.BasicPublish(exchange: "",
-                                         routingKey: "TestesASPNETCore",
+                    _channel.BasicPublish(exchange: "",
+                                         routingKey: pQueue,
                                          basicProperties: null,
                                          body: body);
 

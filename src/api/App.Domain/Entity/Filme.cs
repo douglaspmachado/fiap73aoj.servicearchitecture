@@ -6,7 +6,7 @@ namespace App.Domain.Entity
 {
     public class Filme
     {
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
 
         public string  Titulo { get; set; }
 

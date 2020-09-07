@@ -18,5 +18,9 @@ namespace App.Domain.Entity
 
         public Categoria Categoria { get; set; }
 
+        public bool GostouDoFilme { get; set; }
+
+        public bool JaAssistido { get; set; }
+
     }
 }

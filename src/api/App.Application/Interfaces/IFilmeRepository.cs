@@ -9,6 +9,10 @@ namespace App.Application.Interfaces
     {
         IEnumerable<Filme> GetAll();
 
+        IEnumerable<Filme> GetAllFilmesPalavraChave(string pPalavraChave);
+
+        IEnumerable<Filme> GetAllFilmesCategoria(int pCategoriaFilme);
+
         Filme Get(int pCodigoFilme);
 
         int Insert(Filme filme);

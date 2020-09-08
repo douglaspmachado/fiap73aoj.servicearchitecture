@@ -126,7 +126,7 @@ namespace App.ServiceBus
                         Console.WriteLine(" [x] Received from Rabbit: {0}", message);
                     };
 
-                    _channel.BasicConsume(queue: pQueue,
+                    string retorno = _channel.BasicConsume(queue: pQueue,
                                             autoAck: true,
                                             consumer: consumer);
 

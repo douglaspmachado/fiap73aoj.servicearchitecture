@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Consumer.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("netflix/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
     {
+
+        private readonly IFilmeRepository _filmeRepository;
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
@@ -17,11 +21,73 @@ namespace App.Consumer.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET netflix/filme/1
+        [HttpGet("{idFilme}")]
+        public ActionResult<string> Get(int idFilme)
         {
-            return "value";
+            try
+            {
+                var filme = _filmeRepository.Get(idFilme);
+
+                if (filme != null)
+                {
+                    return Ok(filme);
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado");
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        // GET netflix/filme/categoria/1
+        [HttpGet("{idCategoria}")]
+        public ActionResult<string> GetFilmesPorCategoria(int idCategoria)
+        {
+            try
+            {
+                var filme = _filmeRepository.GetAllFilmesCategoria(idCategoria);
+
+                if (filme != null)
+                {
+                    return Ok(filme);
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado");
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        // GET netflix/filme/"{PalavraChave}"
+        [HttpGet("{palavraChave}")]
+        public ActionResult<string> GetFilmesPorCategoria(string palavraChave)
+        {
+            try
+            {
+                var filmes = _filmeRepository.GetAllFilmesPalavraChave(palavraChave);
+
+                if (filmes != null)
+                {
+                    return Ok(filmes);
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado");
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
         }
 
         // POST api/values

@@ -39,9 +39,9 @@ namespace App.Infra.Repository
                                     SELECT F.TITULO AS Titulo
                                           ,F.DIRETOR AS Diretor
                                           ,F.PRODUTOR AS Produtor
-                                          ,F.DATA_NASCIMENTO AS DataNascimento
+                                          ,F.DATA_LANCAMENTO AS DataLancamento
                                           ,C.NOME AS Categoria 
-                                    FROM dbo.TB_FILME AS F
+                                    FROM dbo.TBFILME AS F
                                     INNER JOIN dbo.TBCATEGORIA AS C
                                     ON F.CATEGORIA = C.CODIGO
                                     WHERE F.CODIGO = '{0}' ", pCodigoFilme);
@@ -68,9 +68,9 @@ namespace App.Infra.Repository
                                     SELECT F.TITULO AS Titulo
                                           ,F.DIRETOR AS Diretor
                                           ,F.PRODUTOR AS Produtor
-                                          ,F.DATA_NASCIMENTO AS DataNascimento
+                                          ,F.DATA_LANCAMENTO AS DataLancamento
                                           ,C.NOME AS Categoria 
-                                    FROM dbo.TB_FILME AS F
+                                    FROM dbo.TBFILME AS F
                                     INNER JOIN dbo.TBCATEGORIA AS C
                                     ON F.CATEGORIA = C.CODIGO
                                     WHERE F.CATEGORIA = '{0}' ", pCategoriaFilme);
@@ -79,7 +79,82 @@ namespace App.Infra.Repository
             return filmes;
         }
 
-        public IEnumerable<Filme> GetAllFilmesPalavraChave(string pNomeFilme, string pDiretor, string pProdutor, string pCategoria)
+        public IEnumerable<Filme> GetAllFilmesPalavraChave(string pPalavraChave)
+        {
+            IEnumerable<Filme> filmes = null;
+
+         
+                using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                {
+                    filmes = conn.Query<Filme>(@"
+                                        SELECT F.TITULO AS Titulo
+                                            ,F.DIRETOR AS Diretor
+                                            ,F.PRODUTOR AS Produtor
+                                            ,F.DATA_LANCAMENTO AS DataLancamento
+                                            ,C.NOME AS Categoria 
+                                        FROM dbo.TB_FILME AS F
+                                        INNER JOIN dbo.TBCATEGORIA AS C
+                                        ON F.CATEGORIA = C.CODIGO
+                                        WHERE F.TITULO LIKE '%{0}%' ", (pPalavraChave));
+                                        
+                }
+                
+                if(filmes == null)
+                {
+                    using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                    {
+                        filmes = conn.Query<Filme>(@"
+                                            SELECT F.TITULO AS Titulo
+                                                ,F.DIRETOR AS Diretor
+                                                ,F.PRODUTOR AS Produtor
+                                                ,F.DATA_LANCAMENTO AS DataLancamento
+                                                ,C.NOME AS Categoria 
+                                            FROM dbo.TB_FILME AS F
+                                            INNER JOIN dbo.TBCATEGORIA AS C
+                                            ON F.CATEGORIA = C.CODIGO
+                                            WHERE F.DIRETOR LIKE '%{0}%' ", (pPalavraChave));
+                                            
+                    }
+                }
+
+                if(filmes == null)
+                {
+                    using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                    {
+                        filmes = conn.Query<Filme>(@"
+                                            SELECT F.TITULO AS Titulo
+                                                ,F.DIRETOR AS Diretor
+                                                ,F.PRODUTOR AS Produtor
+                                                ,F.DATA_LANCAMENTO AS DataLancamento
+                                                ,C.NOME AS Categoria 
+                                            FROM dbo.TB_FILME AS F
+                                            INNER JOIN dbo.TBCATEGORIA AS C
+                                            ON F.CATEGORIA = C.CODIGO
+                                            WHERE F.PPRODUTOR LIKE '%{0}%' ", (pPalavraChave));
+                                            
+                    }
+                }
+
+                if(filmes == null)
+                {
+                    using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                    {
+                        filmes = conn.Query<Filme>(@"
+                                            SELECT F.TITULO AS Titulo
+                                                ,F.DIRETOR AS Diretor
+                                                ,F.PRODUTOR AS Produtor
+                                                ,F.DATA_LANCAMENTO AS DataLancamento
+                                                ,C.NOME AS Categoria 
+                                            FROM dbo.TB_FILME AS F
+                                            INNER JOIN dbo.TBCATEGORIA AS C
+                                            ON F.CATEGORIA = C.CODIGO
+                                            WHERE C.NOME LIKE '%{0}%' ", (pPalavraChave));                       
+                    }
+                }
+                return filmes;
+        }
+
+        public IEnumerable<Filme> GetAll()
         {
             IEnumerable<Filme> filmes;
 
@@ -89,34 +164,9 @@ namespace App.Infra.Repository
                                     SELECT F.TITULO AS Titulo
                                           ,F.DIRETOR AS Diretor
                                           ,F.PRODUTOR AS Produtor
-                                          ,F.DATA_NASCIMENTO AS DataNascimento
+                                          ,F.DATA_NASCIMENTO AS DataLancamento
                                           ,C.NOME AS Categoria 
-                                    FROM dbo.TB_FILME AS F
-                                    INNER JOIN dbo.TBCATEGORIA AS C
-                                    ON F.CATEGORIA = C.CODIGO
-                                    WHERE F.TITULO LIKE '%{0}%' 
-                                    OR F.DIRETOR LIKE '%{1}%'
-                                    OR F.PRODUTOR LIKE '%{2}%'
-                                    OR C.NOME LIKE '%{3}%' ", (pNomeFilme, pDiretor, pProdutor, pCategoria));
-                                    
-            }
-
-            return filmes;
-        }
-
-        public IEnumerable<Filme> GetAll()
-        {
-            IEnumerable<Filme> filmes;
-
-            using (MySqlConnection conn = new MySqlConnection(_configuration["netflixDB"]))
-            {
-                filmes = conn.Query<Filme>(@"
-                                    SELECT F.TITULO AS Titulo
-                                          ,F.DIRETOR AS Diretor
-                                          ,F.PRODUTOR AS Produtor
-                                          ,F.DATA_NASCIMENTO AS DataNascimento
-                                          ,C.NOME AS Categoria 
-                                    FROM dbo.TB_FILME AS F
+                                    FROM dbo.TBFILME AS F
                                     INNER JOIN dbo.TBCATEGORIA AS C
                                     ON F.CATEGORIA = C.CODIGO");
             }

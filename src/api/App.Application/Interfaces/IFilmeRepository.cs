@@ -9,7 +9,7 @@ namespace App.Application.Interfaces
     {
         IEnumerable<Filme> GetAll();
 
-        IEnumerable<Filme> GetAllFilmesPalavraChave(string pNomeFilme, string pDiretor, string pProdutor, string pCategoria);
+        IEnumerable<Filme> GetAllFilmesPalavraChave(string pPalavraChave);
 
         IEnumerable<Filme> GetAllFilmesCategoria(int pCategoriaFilme);
 

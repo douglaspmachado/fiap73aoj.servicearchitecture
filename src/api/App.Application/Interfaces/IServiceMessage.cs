@@ -19,5 +19,7 @@ namespace App.Application.Interfaces
 
         bool SendMessageQueue(string pQueue, string pConteudoMsg);
 
+        string ReceiveMessageQueue(string pQueue);
+
     }
 }

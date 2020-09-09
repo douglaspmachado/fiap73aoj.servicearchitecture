@@ -6,7 +6,8 @@ namespace App.Infra.Providers.Mensageria
 {
    public static class QueueMessage
     {
-        public const string FAVORITAR_FILME = "FAVORITAR_FILME";
+        
+        public const string ABERTURA_CHAMADO = "ABERTURA_CHAMADO";
 
 
     }

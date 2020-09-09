@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using RabbitMQ.Client;
 using App.Application.Interfaces;
+using RabbitMQ.Client.Events;
 
 namespace App.Infra.Providers
 {
@@ -137,6 +138,50 @@ namespace App.Infra.Providers
 
                 throw new Exception(ex.Message);
                 return false;
+            }
+
+        }
+
+        public string ReceiveMessageQueue(string pQueue)
+        {
+            string objMessage = string.Empty;
+
+            try
+            {
+
+
+                if (_channel.IsOpen)
+                {
+
+                    _channel.QueueDeclare(queue: pQueue,
+                      durable: false,
+                      exclusive: false,
+                      autoDelete: false,
+                      arguments: null);
+
+                    var consumer = new EventingBasicConsumer(_channel);
+                    consumer.Received += (model, ea) =>
+                    {
+                        var body = ea.Body.ToArray();
+                        var message = Encoding.UTF8.GetString(body);
+                        objMessage = message;
+                        _channel.BasicAck(ea.DeliveryTag, false);
+                    };
+
+
+                    return objMessage;
+                }
+                else
+                {
+                    return objMessage;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+                return objMessage;
             }
 
         }

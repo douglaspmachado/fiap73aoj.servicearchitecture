@@ -10,7 +10,10 @@ namespace App.ServiceBus
 
         static void Main(string[] args)
         {
+            
+
             ServiceBus serviceRabbit = new ServiceBus();
+            
 
             serviceRabbit.GetConnectionFactory();
             serviceRabbit.CreateConnection();
@@ -20,12 +23,12 @@ namespace App.ServiceBus
             {
                 while (true)
                 {
-                    serviceRabbit.ReceiveMessageQueue(QueueMessage.FAVORITAR_FILME);
+                    serviceRabbit.ReceiveMessageQueue(QueueMessage.ABERTURA_CHAMADO);
 
                 }
 
             }
-                                          
+
         }
 
     }

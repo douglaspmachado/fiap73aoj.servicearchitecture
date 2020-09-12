@@ -14,13 +14,6 @@ namespace App.Consumer.Controllers
 
         private readonly IFilmeRepository _filmeRepository;
 
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET netflix/filme/1
         [HttpGet("{idFilme}")]
         public ActionResult<string> Get(int idFilme)
@@ -46,7 +39,7 @@ namespace App.Consumer.Controllers
 
         // GET netflix/filme/categoria/1
         [HttpGet("{idCategoria}")]
-        public ActionResult<string> GetFilmesPorCategoria(int idCategoria)
+        public ActionResult<string> GetFilmesPorCategoria(string idCategoria)
         {
             try
             {
@@ -69,7 +62,7 @@ namespace App.Consumer.Controllers
 
         // GET netflix/filme/"{PalavraChave}"
         [HttpGet("{palavraChave}")]
-        public ActionResult<string> GetFilmesPorCategoria(string palavraChave)
+        public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)
         {
             try
             {

@@ -11,7 +11,7 @@ namespace App.Application.Interfaces
 
         IEnumerable<Filme> GetAllFilmesPalavraChave(string pPalavraChave);
 
-        IEnumerable<Filme> GetAllFilmesCategoria(int pCategoriaFilme);
+        IEnumerable<Filme> GetAllFilmesCategoria(string pCategoriaFilme);
 
         Filme Get(int pCodigoFilme);
 

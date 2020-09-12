@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Consumer.Controllers
 {
-    [Route("netflix/[controller]")]
+    [Route("filmes/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class FilmesController : ControllerBase
     {
 
         private readonly IFilmeRepository _filmeRepository;

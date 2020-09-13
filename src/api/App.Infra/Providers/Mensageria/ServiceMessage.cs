@@ -114,11 +114,8 @@ namespace App.Infra.Providers
                                          autoDelete: false,
                                          arguments: null);
 
-                    string message =
-                        $"{DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")} - " +
-                        $"Conteúdo da Mensagem: {pConteudoMsg}";
 
-                    var body = Encoding.UTF8.GetBytes(message);
+                    var body = Encoding.UTF8.GetBytes(pConteudoMsg);
 
                     _channel.BasicPublish(exchange: "",
                                          routingKey: pQueue,

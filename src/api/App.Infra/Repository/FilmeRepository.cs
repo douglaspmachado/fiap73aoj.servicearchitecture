@@ -70,6 +70,12 @@ namespace App.Infra.Repository
 
                     filmes = conn.Query<Filme>(SQL.ToString());
                 }
+
+                if(filmes.Count().Equals(0))
+                {
+                    filmes = null;
+                    return filmes;
+                } 
             return filmes;
             }
             catch (Exception ex)
@@ -144,6 +150,12 @@ namespace App.Infra.Repository
                                         
                         filmes = conn.Query<Filme>(SQL.ToString());                       
                     }
+                if(filmes.Count().Equals(0))
+                {
+                    filmes = null;
+                    return filmes;
+                }  
+
                 return filmes;
             }
             catch (Exception ex)

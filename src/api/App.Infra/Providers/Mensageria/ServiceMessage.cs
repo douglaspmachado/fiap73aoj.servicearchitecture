@@ -144,7 +144,7 @@ namespace App.Infra.Providers
 
         public string ReceiveMessageQueue(string pQueue)
         {
-            string objMessage = string.Empty;
+            string retorno = string.Empty;
 
             try
             {
@@ -164,16 +164,21 @@ namespace App.Infra.Providers
                     {
                         var body = ea.Body.ToArray();
                         var message = Encoding.UTF8.GetString(body);
-                        objMessage = message;
-                        _channel.BasicAck(ea.DeliveryTag, false);
+                       
+                        
                     };
 
 
-                    return objMessage;
+                     retorno = _channel.BasicConsume(queue: pQueue,
+                                          autoAck: true,
+                                          consumer: consumer);
+
+
+                    return retorno;
                 }
                 else
                 {
-                    return objMessage;
+                    return retorno;
                 }
 
             }
@@ -181,7 +186,7 @@ namespace App.Infra.Providers
             {
 
                 throw new Exception(ex.Message);
-                return objMessage;
+                return retorno;
             }
 
         }

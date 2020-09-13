@@ -169,7 +169,7 @@ namespace App.Infra.Repository
         {
             IEnumerable<Filme> filmes;
 
-            using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+            using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
             {
                 filmes = conn.Query<Filme>(@"
                                     SELECT TITULO AS Titulo

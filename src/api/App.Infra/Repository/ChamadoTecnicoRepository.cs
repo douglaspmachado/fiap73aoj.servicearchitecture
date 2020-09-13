@@ -1,5 +1,6 @@
 ﻿using App.Application.Interfaces;
 using App.Domain.Entity;
+using Dapper;
 using Microsoft.Extensions.Configuration;
 using MySqlConnector;
 using Newtonsoft.Json;
@@ -35,31 +36,34 @@ namespace App.Infra.Repository
                     using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
                     {
 
-                        SQL.AppendLine(string.Format(@"
+                            SQL.AppendLine(string.Format(@"
                                 
-                            INSERT INTO TAB_CHAMADO
-                           ([CODIGO]
-                           ,[TITULO]
-                           ,[DESCRICAO]
-                           ,[CODIGO_USUARIO]
-                           ,[DATA_ABERTURA]) 
-                     VALUES
-                           ('{0}'
-                           ,'{1}'
-                           ,'{2}'
-                           , {3},NOW());"
+                                INSERT INTO TAB_CHAMADO
+                               (CODIGO
+                               ,TITULO
+                               ,DESCRICAO
+                               ,CODIGO_USUARIO
+                               ,DATA_ABERTURA) 
+                         VALUES
+                               ('{0}'
+                               ,'{1}'
+                               ,'{2}'
+                               , {3},NOW());"
 
 
-                    , GeraCodigoChamado(),
-                    chamadoTec.Titulo,
-                    chamadoTec.Descricao,
-                    chamadoTec.CodigoUsuario));
+                        , GeraCodigoChamado(),
+                        chamadoTec.Titulo,
+                        chamadoTec.Descricao,
+                        chamadoTec.CodigoUsuario));
+
+
+                        conn.Execute(SQL.ToString());
 
                     }
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

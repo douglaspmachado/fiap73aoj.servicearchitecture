@@ -21,32 +21,41 @@ namespace App.Infra.Repository
             this._configuration = configuration;
         }
 
+        public IDbConnection Connection
+        {
+            get
+            {
+                return new MySqlConnection(_configuration.GetConnectionString("NETFLIX"));
+            }
+        }
+
         public IEnumerable<Filme> GetFilmesAssistidos(int codigoUsuario)
         {            
             IEnumerable<Filme> filmes = null;
             
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
+                using (IDbConnection conn = Connection)
                 {
-                    filmes = conn.Query<Filme>(@"
+                    SQL.AppendLine(string.Format(@"
                                     SELECT
                                         F.CODIGO,
                                         F.TITULO,
                                         F.DIRETOR,
                                         F.PRODUTOR,
                                         F.DATA_LANÇAMENTO,
-                                        F.CATEGORIA,
-                                        A.DATA_VISUALIZACAO
+                                        F.CATEGORIA
                                     FROM 
                                         TAB_FILME F
                                     INNER JOIN TAB_FILMES_ASSISTIDOS A ON
                                         F.CODIGO = A.CD_FILME
                                     WHERE
-                                        A.CD_USUARIO = '{0}' ", codigoUsuario);
+                                        A.CD_USUARIO = {0} ", codigoUsuario));
                 
+                    filmes = conn.Query<Filme>(SQL.ToString());
                     return filmes;
                 }
+                
             }
             catch (Exception ex)
             {

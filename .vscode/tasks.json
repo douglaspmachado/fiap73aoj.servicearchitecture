@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/api/src/App.Consumer/App.Consumer.csproj",
+                "${workspaceFolder}/src/api/App.Consumer/App.Consumer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

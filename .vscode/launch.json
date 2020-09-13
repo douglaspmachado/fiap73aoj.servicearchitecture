@@ -12,7 +12,7 @@
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/api/App.Consumer/bin/Debug/netcoreapp2.1/App.Consumer.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/api/src/App.Consumer",
+            "cwd": "${workspaceFolder}/src/api/App.Consumer",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

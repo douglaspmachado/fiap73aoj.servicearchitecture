@@ -24,6 +24,12 @@ namespace App.Producer.Controllers
             this._serviceMessage = serviceBus;
         }
 
+
+        /// <summary>
+        /// Possibilidade de abrir um chamado técnico de algum problema que está acontecendo
+        /// </summary>
+        /// <param name="chamadoTecnico"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AbrirChamado")]
         public async Task<IActionResult> AbrirChamado([FromBody] ChamadoTecnico chamadoTecnico)

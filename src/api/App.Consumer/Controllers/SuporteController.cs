@@ -59,7 +59,7 @@ namespace App.Consumer.Controllers
                         }
                         else
                         {
-                            return BadRequest("Ocorreu um erro ao postar a mensagem no message broker");
+                            return Accepted("Não há chamados para atendimento");
                         }
 
                     }

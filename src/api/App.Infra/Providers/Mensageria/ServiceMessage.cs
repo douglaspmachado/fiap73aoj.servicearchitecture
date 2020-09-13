@@ -31,11 +31,11 @@ namespace App.Infra.Providers
                 Port = int.Parse(_config["rabbit_porta"]),
                 UserName = _config["rabbit_user"],
                 Password = _config["rabbit_pwd"],
-               
+
             };
 
         }
-               
+
         public bool CreateConnection()
         {
 
@@ -164,14 +164,26 @@ namespace App.Infra.Providers
                     {
                         var body = ea.Body.ToArray();
                         var message = Encoding.UTF8.GetString(body);
-                       
-                        
+
+
                     };
 
 
-                     retorno = _channel.BasicConsume(queue: pQueue,
-                                          autoAck: true,
-                                          consumer: consumer);
+
+                    var data = _channel.BasicGet(pQueue, true);
+
+                    if (data != null)
+                    {
+                        var result = System.Text.Encoding.UTF8.GetString(data.Body.ToArray());
+                    }
+
+                    
+                  
+
+
+                    //retorno = _channel.BasicConsume(queue: pQueue,
+                    //                      autoAck: true,
+                    //                      consumer: consumer);
 
 
                     return retorno;

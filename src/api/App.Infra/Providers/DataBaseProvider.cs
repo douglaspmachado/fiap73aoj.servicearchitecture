@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace App.Infra.Providers
 {

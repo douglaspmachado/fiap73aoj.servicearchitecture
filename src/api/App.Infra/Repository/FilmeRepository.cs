@@ -28,7 +28,7 @@ namespace App.Infra.Repository
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
                 {
                     conn.Query<Filme>(@"
                                     SELECT TITULO AS Titulo

@@ -48,11 +48,11 @@ namespace App.Consumer.Controllers
         {
             try
             {
-                var filme = _filmeRepository.GetAllFilmesCategoria(categoria);
+                var filmes = _filmeRepository.GetAllFilmesCategoria(categoria);
 
-                if (filme != null)
+                if (filmes != null)
                 {
-                    return Ok(filme);
+                    return Ok(filmes);
                 }
                 else
                 {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace App.Domain.Entity
 {
@@ -17,10 +15,5 @@ namespace App.Domain.Entity
         public DateTime DataLançamento { get; set; }
 
         public Categoria Categoria { get; set; }
-
-        public bool GostouDoFilme { get; set; }
-
-        public bool JaAssistido { get; set; }
-
     }
 }

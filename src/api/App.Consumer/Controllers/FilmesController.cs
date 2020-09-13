@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Consumer.Controllers
 {
-    [Route("filmes/[controller]")]
+    [Route("api/Consumer[controller]")]
     [ApiController]
     public class FilmesController : ControllerBase
     {
@@ -16,6 +16,7 @@ namespace App.Consumer.Controllers
 
         // GET netflix/filme/1
         [HttpGet("{idFilme}")]
+        [Route("Filme")]
         public ActionResult<string> Get(int idFilme)
         {
             try
@@ -39,6 +40,7 @@ namespace App.Consumer.Controllers
 
         // GET netflix/filme/categoria/1
         [HttpGet("{idCategoria}")]
+        [Route("Filme/Categoria")]
         public ActionResult<string> GetFilmesPorCategoria(string idCategoria)
         {
             try
@@ -62,6 +64,7 @@ namespace App.Consumer.Controllers
 
         // GET netflix/filme/"{PalavraChave}"
         [HttpGet("{palavraChave}")]
+        [Route("Filme/PalavraChave")]
         public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)
         {
             try

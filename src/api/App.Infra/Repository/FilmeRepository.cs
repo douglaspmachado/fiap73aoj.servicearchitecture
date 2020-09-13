@@ -22,11 +22,6 @@ namespace App.Infra.Repository
             this._configuration = configuration;
         }
 
-        public int Delete(Filme filme)
-        {
-            throw new NotImplementedException();
-        }
-
         public Filme Get(int pCodigoFilme)
         {
             Filme filme = null;
@@ -161,11 +156,6 @@ namespace App.Infra.Repository
         }
 
         public int Insert(Filme filme)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Update(Filme filme)
         {
             throw new NotImplementedException();
         }

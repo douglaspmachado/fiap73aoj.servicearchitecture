@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Application.Interfaces;
@@ -14,6 +15,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
+using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.OpenApi.Models;
 
 namespace App.Consumer
 {
@@ -29,6 +32,33 @@ namespace App.Consumer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            #region Swagger
+            // Configurando o serviço de documentação do Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Netflix API - Consumer",
+                        Version = "v1",
+                        Description = "",
+                    });
+
+
+
+                string caminhoAplicacao =
+                    PlatformServices.Default.Application.ApplicationBasePath;
+                string nomeAplicacao =
+                    PlatformServices.Default.Application.ApplicationName;
+                string caminhoXmlDoc =
+                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+
+                c.IncludeXmlComments(caminhoXmlDoc);
+            });
+
+            #endregion
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddTransient<IFilmeRepository, FilmeRepository>();
@@ -47,6 +77,12 @@ namespace App.Consumer
                 app.UseHsts();
             }
 
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netflix API - Consumer");
+            });
             app.UseMvc();
         }
     }

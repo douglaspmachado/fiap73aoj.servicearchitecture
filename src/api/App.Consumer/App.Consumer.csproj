@@ -3,6 +3,11 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\projetos\Faculdade\fiap73aoj.servicearchitecture\src\API\App.Consumer\App.Consumer.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
@@ -10,12 +15,16 @@
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
     <PackageReference Include="MySqlConnector" Version="1.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
     <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi" Version="5.5.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Application\App.Application.csproj" />

@@ -12,7 +12,14 @@ using Microsoft.Extensions.Options;
 using App.Infra.Providers.Mensageria;
 using App.Infra.Providers;
 using App.Application.Interfaces;
-
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using Swashbuckle.AspNetCore.SwaggerUI;
+using Microsoft.OpenApi.Models;
+using System.IO;
+using Microsoft.Extensions;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace App.Producer
 {
@@ -30,6 +37,34 @@ namespace App.Producer
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+
+            #region Swagger
+            // Configurando o serviço de documentação do Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Netflix API - Producer",
+                        Version = "v1",
+                        Description = "",
+                    });
+
+
+
+                string caminhoAplicacao =
+                    PlatformServices.Default.Application.ApplicationBasePath;
+                string nomeAplicacao =
+                    PlatformServices.Default.Application.ApplicationName;
+                string caminhoXmlDoc =
+                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+
+                c.IncludeXmlComments(caminhoXmlDoc);
+            });
+
+            #endregion
+
+
             //Adicionado serviço de mensageria
             services.AddTransient<IServiceMessage, ServiceMessage>();
 
@@ -44,6 +79,11 @@ namespace App.Producer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netflix API - Producer");
+            });
             app.UseMvc();
         }
     }

@@ -22,9 +22,10 @@ namespace App.Infra.Repository
             this._configuration = configuration;
         }
 
-        public void InsereChamadoDB(string message)
+        public string InsereChamadoDB(string message)
         {
             SQL = new StringBuilder();
+            ChamadoTecnico chamado = null;
 
             try
             {
@@ -35,6 +36,8 @@ namespace App.Infra.Repository
 
                     using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
                     {
+
+                        chamadoTec.CodigoChamado = GeraCodigoChamado();
 
                             SQL.AppendLine(string.Format(@"
                                 
@@ -51,13 +54,15 @@ namespace App.Infra.Repository
                                , {3},NOW());"
 
 
-                        , GeraCodigoChamado(),
+                        , chamadoTec.CodigoChamado,
                         chamadoTec.Titulo,
                         chamadoTec.Descricao,
                         chamadoTec.CodigoUsuario));
 
 
                         conn.Execute(SQL.ToString());
+
+                        message = JsonConvert.SerializeObject(chamadoTec);
 
                     }
 
@@ -69,7 +74,7 @@ namespace App.Infra.Repository
                 throw;
             }
 
-
+            return message;
 
         }
 

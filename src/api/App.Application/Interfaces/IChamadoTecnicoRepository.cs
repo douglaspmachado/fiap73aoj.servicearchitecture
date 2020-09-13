@@ -6,7 +6,7 @@ namespace App.Application.Interfaces
 {
    public interface IChamadoTecnicoRepository
     {
-        void InsereChamadoDB(string message);
+        string InsereChamadoDB(string message);
 
     }
 }

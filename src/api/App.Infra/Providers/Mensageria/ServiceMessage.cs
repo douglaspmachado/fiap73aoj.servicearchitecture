@@ -175,15 +175,8 @@ namespace App.Infra.Providers
                     if (data != null)
                     {
                         var result = System.Text.Encoding.UTF8.GetString(data.Body.ToArray());
+                        retorno = result.ToString();
                     }
-
-                    
-                  
-
-
-                    //retorno = _channel.BasicConsume(queue: pQueue,
-                    //                      autoAck: true,
-                    //                      consumer: consumer);
 
 
                     return retorno;

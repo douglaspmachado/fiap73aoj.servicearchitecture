@@ -8,6 +8,7 @@ using App.Application.Interfaces;
 using App.Infra.Providers.Mensageria;
 using App.Domain.Entity;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace App.Consumer.Controllers
 {
@@ -55,11 +56,12 @@ namespace App.Consumer.Controllers
 
                         if (!string.IsNullOrEmpty(message))
                         {
-                            return Ok(JsonConvert.DeserializeObject<ChamadoTecnico>(message));
+                          
+                            return Ok(message);
                         }
                         else
                         {
-                            return Accepted("Não há chamados para atendimento");
+                            return Ok("Não há chamados para atendimento");
                         }
 
                     }
@@ -119,10 +121,11 @@ namespace App.Consumer.Controllers
                         if (_serviceMessage.IsChannelOpen())
                         {
 
-                            if (_serviceMessage.SendMessageQueue(QueueMessage.ABERTURA_CHAMADO, message))
+                            //Registra o chamado tecnico no banco de dados
+                           
+                            if (_serviceMessage.SendMessageQueue(QueueMessage.ABERTURA_CHAMADO, _chamadoTecnicoRepository.InsereChamadoDB(message)))
                             {
-                                //Registra o chamado tecnico no banco de dados
-                                _chamadoTecnicoRepository.InsereChamadoDB(message);
+                                
                                 return Ok();
                             }
                             else

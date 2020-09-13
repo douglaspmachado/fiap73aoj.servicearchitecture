@@ -21,7 +21,7 @@ namespace App.Infra.Providers
         public IDbConnection Connection
         {
 
-            get { return new MySqlConnection(_config.GetConnectionString("")); }
+            get { return new MySqlConnection(_config.GetConnectionString("NETFLIX")); }
         }
     }
 }

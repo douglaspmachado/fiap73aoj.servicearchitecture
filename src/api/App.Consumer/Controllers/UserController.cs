@@ -19,7 +19,7 @@ namespace App.Consumer.Controllers
             this._iUserRepository = iUserRepository;
         }
 
-        [Route("Assistidos/{idUsuario}")]
+        [Route("Assistidos/{codigoUsuario}")]
         public ActionResult<string> GetFilmesAssistidos(int codigoUsuario)
         {
             try

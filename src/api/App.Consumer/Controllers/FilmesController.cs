@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Consumer.Controllers
 {
-    [Route("api/Consumer[controller]")]
+    [Route("netflix/filme")]
     [ApiController]
     public class FilmesController : ControllerBase
     {
 
         private readonly IFilmeRepository _filmeRepository;
 
-        // GET netflix/filme/1
-        [HttpGet("{idFilme}")]
-        [Route("Filme")]
+        // GET netflix/filme/detalhe/1
+        //[HttpGet("{idFilme:int}")]
+        [Route("detalhe/{id}")]
         public ActionResult<string> Get(int idFilme)
         {
             try
@@ -38,14 +38,14 @@ namespace App.Consumer.Controllers
             }
         }
 
-        // GET netflix/filme/categoria/1
-        [HttpGet("{idCategoria}")]
-        [Route("Filme/Categoria")]
-        public ActionResult<string> GetFilmesPorCategoria(string idCategoria)
+        // GET netflix/filme/categoria/Ação
+        //[HttpGet("categoria/{categoria}")]
+        [Route("categoria/{categoria}")]
+        public ActionResult<string> GetFilmesPorCategoria(string categoria)
         {
             try
             {
-                var filme = _filmeRepository.GetAllFilmesCategoria(idCategoria);
+                var filme = _filmeRepository.GetAllFilmesCategoria(categoria);
 
                 if (filme != null)
                 {
@@ -62,9 +62,9 @@ namespace App.Consumer.Controllers
             }
         }
 
-        // GET netflix/filme/"{PalavraChave}"
-        [HttpGet("{palavraChave}")]
-        [Route("Filme/PalavraChave")]
+        // GET netflix/filme/PalavraChave
+        //[HttpGet("palavraChave/{palavraChave}")]
+        [Route("palavraChave/{palavraChave}")]
         public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)
         {
             try

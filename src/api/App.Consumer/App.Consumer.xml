@@ -4,5 +4,18 @@
         <name>App.Consumer</name>
     </assembly>
     <members>
+        <member name="M:App.Consumer.Controllers.SuporteController.AtenderChamado">
+            <summary>
+            Possibilidade de atendimento de um chamado técnico 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:App.Consumer.Controllers.SuporteController.AbrirChamado(App.Domain.Entity.ChamadoTecnico)">
+            <summary>
+            Possibilidade de abrir um chamado técnico de algum problema que está acontecendo
+            </summary>
+            <param name="chamadoTecnico"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

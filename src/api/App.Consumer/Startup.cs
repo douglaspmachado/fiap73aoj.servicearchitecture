@@ -17,6 +17,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.IO;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
+using App.Infra.Providers;
 
 namespace App.Consumer
 {
@@ -63,6 +64,11 @@ namespace App.Consumer
 
             services.AddTransient<IFilmeRepository, FilmeRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IChamadoTecnicoRepository, ChamadoTecnicoRepository>();
+
+
+            //Adicionado serviço de mensageria
+            services.AddTransient<IServiceMessage, ServiceMessage>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

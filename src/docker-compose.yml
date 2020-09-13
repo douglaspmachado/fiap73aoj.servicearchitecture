@@ -1,10 +1,6 @@
 version: '3'
 
 services:
-   consumerapi:
-      image: consumer
-      build: 
-         context: ./
    rabbitmq:
       image: rabbitmq:3-management
       ports:

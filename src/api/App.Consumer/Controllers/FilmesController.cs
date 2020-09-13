@@ -23,6 +23,7 @@ namespace App.Consumer.Controllers
         // Retorna 200 OK quando encontra filmes para o codigo enviado
         // Retorna 404 NotFound quando não encontra filmes para o codigo especificado
 
+        [HttpGet]
         [Route("detalhe/{idFilme}")]
         public ActionResult<string> Get(int idFilme)
         {
@@ -39,7 +40,7 @@ namespace App.Consumer.Controllers
                     return NotFound("Filme não encontrado");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
@@ -48,7 +49,7 @@ namespace App.Consumer.Controllers
         // GET api/Consumer/filmes/categoria/Ação
         // Retorna 200 OK quando encontra filmes para a categoria
         // Retorna 404 NotFound quando não encontra filmes para a categoria especificada
-
+        [HttpGet]
         [Route("categoria/{categoria}")]
         public ActionResult<string> GetFilmesPorCategoria(string categoria)
         {
@@ -65,7 +66,7 @@ namespace App.Consumer.Controllers
                     return NotFound("Filme não encontrado");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
@@ -74,7 +75,7 @@ namespace App.Consumer.Controllers
         // GET api/Consumer/filmes/PalavraChave
         // Retorna 200 OK quando encontra filmes relacionado à palavra chave
         // Retorna 404 NotFound quando não encontra nenhum filme relacionado à palavra chave
-        
+        [HttpGet]
         [Route("palavraChave/{palavraChave}")]
         public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)
         {
@@ -91,28 +92,28 @@ namespace App.Consumer.Controllers
                     return NotFound("Filme não encontrado");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return StatusCode(500);
             }
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+        //// POST api/values
+        //[HttpPost]
+        //public void Post([FromBody] string value)
+        //{
+        //}
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //// PUT api/values/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/values/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

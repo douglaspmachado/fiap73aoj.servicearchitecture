@@ -1,12 +1,11 @@
 ﻿using App.Domain.Entity;
 using Dapper;
 using Microsoft.Extensions.Configuration;
-using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using App.Application.Interfaces;
-using System.Data;
+using MySqlConnector;
 
 namespace App.Infra.Repository
 {

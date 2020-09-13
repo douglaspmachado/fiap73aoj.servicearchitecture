@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Consumer.Controllers
 {
-    [Route("netflix/filme")]
+    [Route("api/Consumer/[controller]")]
     [ApiController]
     public class FilmesController : ControllerBase
     {
@@ -19,8 +19,7 @@ namespace App.Consumer.Controllers
             this._filmeRepository = filmeRepository;
         }
 
-        // GET netflix/filme/detalhe/1
-        //[HttpGet("{idFilme:int}")]
+        // GET api/Consumer/filmes/detalhe/1
         [Route("detalhe/{idFilme}")]
         public ActionResult<string> Get(int idFilme)
         {
@@ -43,8 +42,7 @@ namespace App.Consumer.Controllers
             }
         }
 
-        // GET netflix/filme/categoria/Ação
-        //[HttpGet("categoria/{categoria}")]
+        // GET api/Consumer/filmes/categoria/Ação
         [Route("categoria/{categoria}")]
         public ActionResult<string> GetFilmesPorCategoria(string categoria)
         {
@@ -67,8 +65,7 @@ namespace App.Consumer.Controllers
             }
         }
 
-        // GET netflix/filme/PalavraChave
-        //[HttpGet("palavraChave/{palavraChave}")]
+        // GET api/Consumer/filmes/PalavraChave
         [Route("palavraChave/{palavraChave}")]
         public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)
         {

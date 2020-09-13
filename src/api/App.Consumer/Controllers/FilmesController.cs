@@ -14,9 +14,14 @@ namespace App.Consumer.Controllers
 
         private readonly IFilmeRepository _filmeRepository;
 
+        public FilmesController(IFilmeRepository filmeRepository)
+        {
+            this._filmeRepository = filmeRepository;
+        }
+
         // GET netflix/filme/detalhe/1
         //[HttpGet("{idFilme:int}")]
-        [Route("detalhe/{id}")]
+        [Route("detalhe/{idFilme}")]
         public ActionResult<string> Get(int idFilme)
         {
             try

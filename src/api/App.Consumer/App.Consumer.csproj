@@ -4,9 +4,9 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <!--<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\projetos\Faculdade\fiap73aoj.servicearchitecture\src\API\App.Consumer\App.Consumer.xml</DocumentationFile>
-  </PropertyGroup>
+  </PropertyGroup>-->
 
   <ItemGroup>
     <Folder Include="wwwroot\" />

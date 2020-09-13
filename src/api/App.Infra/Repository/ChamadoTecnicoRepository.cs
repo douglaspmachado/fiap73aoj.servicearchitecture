@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace App.Infra.Repository
 {
     public class ChamadoTecnicoRepository : IChamadoTecnicoRepository
@@ -31,13 +32,13 @@ namespace App.Infra.Repository
 
                     var chamadoTec = JsonConvert.DeserializeObject<ChamadoTecnico>(message);
 
-                    using (MySqlConnection conn = new MySqlConnection(_configuration["NETFLIX"]))
+                    using (MySqlConnection conn = new MySqlConnection(_configuration.GetConnectionString("NETFLIX")))
                     {
 
                         SQL.AppendLine(string.Format(@"
                                 
                             INSERT INTO TAB_CHAMADO
-                           ([CODIGO_CHAMADO]
+                           ([CODIGO]
                            ,[TITULO]
                            ,[DESCRICAO]
                            ,[CODIGO_USUARIO]

@@ -20,6 +20,7 @@ using Microsoft.OpenApi.Models;
 using System.IO;
 using Microsoft.Extensions;
 using Microsoft.Extensions.PlatformAbstractions;
+using App.Infra.Repository;
 
 namespace App.Producer
 {
@@ -67,6 +68,10 @@ namespace App.Producer
 
             //Adicionado serviço de mensageria
             services.AddTransient<IServiceMessage, ServiceMessage>();
+
+            //Serviço de persistencia 
+            services.AddTransient<IChamadoTecnicoRepository, ChamadoTecnicoRepository>();
+
 
 
         }

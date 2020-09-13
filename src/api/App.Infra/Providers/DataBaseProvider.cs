@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MySqlConnector;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
 
 namespace App.Infra.Providers
 {
@@ -21,7 +18,7 @@ namespace App.Infra.Providers
         public IDbConnection Connection
         {
 
-            get { return new MySqlConnection(_config.GetConnectionString("")); }
+            get { return new MySqlConnection(_config.GetConnectionString("NETFLIX")); }
         }
     }
 }

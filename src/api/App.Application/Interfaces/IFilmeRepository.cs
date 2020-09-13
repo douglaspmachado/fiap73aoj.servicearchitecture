@@ -16,10 +16,5 @@ namespace App.Application.Interfaces
         Filme Get(int pCodigoFilme);
 
         int Insert(Filme filme);
-
-        int Update(Filme filme);
-
-        int Delete(Filme filme);
-
     }
 }

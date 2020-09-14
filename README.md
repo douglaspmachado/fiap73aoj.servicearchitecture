@@ -18,7 +18,6 @@ Para execução da aplicação sugerimos os seguintes passos:
   * 5.3 - cd src
   * 5.4 - docker-compose up -d (Inicia aplicação)
 * 6 - Após a execução do comando docker-compose aplicação deve ficar em modo "up", sinalizando as "portas" configuradas no arquivo YAML conforme imagem abaixo:
-
 ![up](https://user-images.githubusercontent.com/17520851/93144247-fb170e00-f6bf-11ea-8a7b-1ed3fc5b0f92.PNG)
 
   

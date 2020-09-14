@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using App.Domain.Entity;
 using System.Threading.Tasks;
 using App.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,11 @@ namespace App.Consumer.Controllers
             this._iUserRepository = iUserRepository;
         }
 
+        /// <summary>
+        /// Listar filmes visualizados por determinado usuário
+        /// </summary>
+        /// <param name="codigoUsuario"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("Assistidos/{codigoUsuario}")]
         public ActionResult<string> GetFilmesAssistidos(int codigoUsuario)
@@ -42,22 +48,60 @@ namespace App.Consumer.Controllers
             }
         }
 
-        //// POST api/values
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        /// <summary>
+        /// Possibilidade de atribuir notas a filmes de seu interesse
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Votar")]
+       public async Task<IActionResult> VotarFilme([FromBody]Usuario usuario)
+        {
+            try
+            {
+                bool execCount = _iUserRepository.VotarFilme(usuario);
 
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+                if (execCount)
+                {
+                    return Ok(execCount.ToString());
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
 
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        /// <summary>
+        /// Possibilidade de favoritar filmes para assistir posteriormente 
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("Favoritar")]
+       public async Task<IActionResult> FavoritarFilme([FromBody]Usuario usuario)
+        {
+            try
+            {
+                bool execCount = _iUserRepository.FavoritarFilme(usuario);
+
+                if (execCount)
+                {
+                    return Ok(execCount.ToString());
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }

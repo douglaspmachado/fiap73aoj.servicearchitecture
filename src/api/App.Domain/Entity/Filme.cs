@@ -15,5 +15,7 @@ namespace App.Domain.Entity
         public DateTime DataLançamento { get; set; }
 
         public string Categoria { get; set; }
+
+        public int? Nota { get; set; }
     }
 }

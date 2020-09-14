@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
-using App.Domain.Entity;
+using System.Text;
 
-namespace App.Domain
+namespace App.Domain.Entity
 {
     public class Usuario
     {
@@ -12,6 +13,8 @@ namespace App.Domain
         public List<Filme> FilmesAssistidos { get; set; }
 
         public List<Filme> FilmesParaAssistir { get; set; }
+
+        public List<Filme> FilmesParaVotar { get; set; }
 
     }
 }

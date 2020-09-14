@@ -23,6 +23,11 @@ namespace App.Consumer.Controllers
         // Retorna 200 OK quando encontra filmes para o codigo enviado
         // Retorna 404 NotFound quando não encontra filmes para o codigo especificado
 
+        /// <summary>
+        /// Listar detalhe de um determinado filme 
+        /// </summary>
+        /// <param name="idFilme"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("detalhe/{idFilme}")]
         public ActionResult<string> Get(int idFilme)
@@ -49,6 +54,12 @@ namespace App.Consumer.Controllers
         // GET api/Consumer/filmes/categoria/Ação
         // Retorna 200 OK quando encontra filmes para a categoria
         // Retorna 404 NotFound quando não encontra filmes para a categoria especificada
+        
+        /// <summary>
+        /// Listar filmes de acordo com a categoria 
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("categoria/{categoria}")]
         public ActionResult<string> GetFilmesPorCategoria(string categoria)
@@ -75,6 +86,11 @@ namespace App.Consumer.Controllers
         // GET api/Consumer/filmes/PalavraChave
         // Retorna 200 OK quando encontra filmes relacionado à palavra chave
         // Retorna 404 NotFound quando não encontra nenhum filme relacionado à palavra chave
+        /// <summary>
+        /// Listar filmes de acordo com uma palavra chave
+        /// </summary>
+        /// <param name="palavraChave"></param>
+        /// <returns></returns>
         [HttpGet]
         [Route("palavraChave/{palavraChave}")]
         public ActionResult<string> GetFilmesPorPalavraChave(string palavraChave)

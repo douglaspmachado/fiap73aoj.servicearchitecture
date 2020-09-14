@@ -2,7 +2,7 @@
 
 ### SERVICES ARCHITECTURE / API / MOBILE ARCHITECTURE / TADEU D’ALESSANDRO BARBOSA
 
-## Arquitetura
+### Arquitetura
 
-## Execução (Play With Docker)
+### Execução (Play With Docker)
 

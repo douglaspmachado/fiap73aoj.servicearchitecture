@@ -13,6 +13,8 @@ namespace App.Application.Interfaces
 
         IEnumerable<Filme> GetAllFilmesCategoria(string pCategoriaFilme);
 
+        IEnumerable<Filme> GetFilmesMaisVistosPorCategoria();
+
         Filme Get(int pCodigoFilme);
 
         int Insert(Filme filme);

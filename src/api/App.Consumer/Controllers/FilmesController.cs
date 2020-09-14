@@ -114,6 +114,66 @@ namespace App.Consumer.Controllers
             }
         }
 
+        // GET api/Consumer/filmes/maisVistos
+        // Retorna 200 OK quando encontra filmes relacionado à palavra chave
+        // Retorna 404 NotFound quando não encontra nenhum filme relacionado à palavra chave
+        /// <summary>
+        /// Listar filmes mais vistos de cada uma das categorias
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("maisVistos")]
+        public ActionResult<string> GetFilmesMaisVistoDeCadaCategoria()
+        {
+            try
+            {
+                var filmes = _filmeRepository.GetFilmesMaisVistosPorCategoria();
+
+                if (filmes != null)
+                {
+                    return Ok(filmes);
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado");
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        // GET api/Consumer/filmes/maisVistos
+        // Retorna 200 OK quando encontra filmes relacionado à palavra chave
+        // Retorna 404 NotFound quando não encontra nenhum filme relacionado à palavra chave
+        /// <summary>
+        /// Listar todos os filmes da plataforma
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("")]
+        public ActionResult<string> GetFilmesPlataforma()
+        {
+            try
+            {
+                var filmes = _filmeRepository.GetAll();
+
+                if (filmes != null)
+                {
+                    return Ok(filmes);
+                }
+                else
+                {
+                    return NotFound("Filme não encontrado");
+                }
+            }
+            catch(Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
         //// POST api/values
         //[HttpPost]
         //public void Post([FromBody] string value)

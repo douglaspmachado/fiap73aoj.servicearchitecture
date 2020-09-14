@@ -27,7 +27,7 @@ namespace App.Infra.Providers
 
             factory = new ConnectionFactory
             {
-                HostName = _config["rabbit_host_docker_tools"],
+                HostName = _config["rabbit_host_docker"],
                 Port = int.Parse(_config["rabbit_porta"]),
                 UserName = _config["rabbit_user"],
                 Password = _config["rabbit_pwd"],

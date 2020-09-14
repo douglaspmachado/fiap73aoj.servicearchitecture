@@ -18,8 +18,22 @@ Para execução da aplicação sugerimos os seguintes passos:
   * 5.3 - cd src
   * 5.4 - docker-compose up -d (Inicia aplicação)
 * 6 - Após a execução do comando docker-compose aplicação deve ficar em modo "up", sinalizando as "portas" configuradas no arquivo YAML conforme imagem abaixo:
+
 ![up](https://user-images.githubusercontent.com/17520851/93144247-fb170e00-f6bf-11ea-8a7b-1ed3fc5b0f92.PNG)
 
+* 7 - Acesse os componentes da aplicação a partir de suas respectivas "portas"
+  * 7.1 - Cliclando na porta "20001" acesse o Swagger da aplicação.
+  * 7.2 - Cliclando na porta "15672" acesse o serviço do RabbitMQ (mensageria) da aplicação.
+    * 7.2.1 - Realize o login no rabbit para acompanhar o trafego de mensagens utilizando as credencias abaixo: 
+    * 7.2.2 - Username: guest
+    * 7.2.3 - Password: guest
+    
+* 8 - Serviços em funcionamento. 
+![serviços_up](https://user-images.githubusercontent.com/17520851/93146587-9959a280-f6c5-11ea-9be2-477df6f9106f.PNG)
+
+    
+    
+  
   
   
   

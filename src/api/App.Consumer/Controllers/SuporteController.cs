@@ -33,7 +33,7 @@ namespace App.Consumer.Controllers
         /// Possibilidade de atendimento de um chamado técnico 
         /// </summary>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         [Route("AtenderChamado")]
         public async Task<IActionResult> AtenderChamado()
         {

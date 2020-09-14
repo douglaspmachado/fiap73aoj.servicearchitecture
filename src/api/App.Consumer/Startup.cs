@@ -18,6 +18,7 @@ using System.IO;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using App.Infra.Providers;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace App.Consumer
 {
@@ -89,6 +90,11 @@ namespace App.Consumer
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Netflix API - Consumer");
             });
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "swagger");
+            app.UseRewriter(option);
+
             app.UseMvc();
         }
     }

@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+   consumerapi: 
+      image: consumer
+      build: 
+         context: ./api
+         dockerfile: Dockerfile
+      ports: 
+         - "20001:80"
+      depends_on: 
+         - rabbitmq
    rabbitmq:
       image: rabbitmq:3-management
       ports:

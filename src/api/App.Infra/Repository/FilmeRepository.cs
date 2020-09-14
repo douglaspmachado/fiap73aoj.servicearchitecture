@@ -35,7 +35,7 @@ namespace App.Infra.Repository
                                           ,TITULO AS Titulo
                                           ,DIRETOR AS Diretor
                                           ,PRODUTOR AS Produtor
-                                          ,DATA_LANCAMENTO AS DataLancamento
+                                          ,DATA_LANCAMENTO AS DataLançamento
                                           ,CATEGORIA AS Categoria 
                                     FROM TAB_FILME
                                     WHERE CODIGO = '{0}' ", pCodigoFilme));
@@ -63,7 +63,7 @@ namespace App.Infra.Repository
                                               ,TITULO AS Titulo
                                               ,DIRETOR AS Diretor
                                               ,PRODUTOR AS Produtor
-                                              ,DATA_LANCAMENTO AS DataLancamento
+                                              ,DATA_LANCAMENTO AS DataLançamento
                                               ,CATEGORIA AS Categoria 
                                         FROM TAB_FILME
                                         WHERE CATEGORIA = '{0}' ", pCategoriaFilme));
@@ -97,7 +97,7 @@ namespace App.Infra.Repository
                                               ,TITULO AS Titulo
                                               ,DIRETOR AS Diretor
                                               ,PRODUTOR AS Produtor
-                                              ,DATA_LANCAMENTO AS DataLancamento
+                                              ,DATA_LANCAMENTO AS DataLançamento
                                               ,CATEGORIA AS Categoria 
                                         FROM TAB_FILME
                                         WHERE TITULO LIKE '%{0}%' ", pPalavraChave));
@@ -112,7 +112,7 @@ namespace App.Infra.Repository
                                               ,TITULO AS Titulo
                                               ,DIRETOR AS Diretor
                                               ,PRODUTOR AS Produtor
-                                              ,DATA_LANCAMENTO AS DataLancamento
+                                              ,DATA_LANCAMENTO AS DataLançamento
                                               ,CATEGORIA AS Categoria
                                         FROM TAB_FILME
                                         WHERE DIRETOR LIKE '%{0}%' ", pPalavraChave));
@@ -128,7 +128,7 @@ namespace App.Infra.Repository
                                               ,TITULO AS Titulo
                                               ,DIRETOR AS Diretor
                                               ,PRODUTOR AS Produtor
-                                              ,DATA_LANCAMENTO AS DataLancamento
+                                              ,DATA_LANCAMENTO AS DataLançamento
                                               ,CATEGORIA AS Categoria
                                         FROM TAB_FILME
                                         WHERE PRODUTOR LIKE '%{0}%' ", pPalavraChave));               
@@ -143,7 +143,7 @@ namespace App.Infra.Repository
                                               ,TITULO AS Titulo
                                               ,DIRETOR AS Diretor
                                               ,PRODUTOR AS Produtor
-                                              ,DATA_LANCAMENTO AS DataLancamento
+                                              ,DATA_LANCAMENTO AS DataLançamento
                                               ,CATEGORIA AS Categoria 
                                         FROM TAB_FILME
                                         WHERE CATEGORIA LIKE '%{0}%' ", pPalavraChave));
@@ -178,7 +178,7 @@ namespace App.Infra.Repository
                                               ,TABELA.TITULO AS Titulo
                                               ,TABELA.DIRETOR AS Diretor
                                               ,TABELA.PRODUTOR AS Produtor
-                                              ,TABELA.DATA_LANCAMENTO AS DataLancamento
+                                              ,TABELA.DATA_LANCAMENTO AS DataLançamento
                                               ,MAX(TABELA.QUANTIDADE)
                                         FROM (SELECT F.CATEGORIA
                                                     ,F.CODIGO
@@ -223,7 +223,7 @@ namespace App.Infra.Repository
                                             ,TITULO AS Titulo
                                             ,DIRETOR AS Diretor
                                             ,PRODUTOR AS Produtor
-                                            ,DATA_LANCAMENTO AS DataLancamento
+                                            ,DATA_LANCAMENTO AS DataLançamento
                                             ,CATEGORIA AS Categoria 
                                         FROM TAB_FILME"));
 

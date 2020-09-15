@@ -30,8 +30,8 @@ Para execução da aplicação sugerimos os seguintes passos:
 ![up](https://user-images.githubusercontent.com/17520851/93144247-fb170e00-f6bf-11ea-8a7b-1ed3fc5b0f92.PNG)
 
 * 7 - Acesse os componentes da aplicação a partir de suas respectivas "portas"
-  * 7.1 - Cliclando na porta "20001" acesse o Swagger da aplicação.
-  * 7.2 - Cliclando na porta "15672" acesse o serviço do RabbitMQ (mensageria) da aplicação.
+  * 7.1 - Clicando na porta "20001" acesse o Swagger da aplicação.
+  * 7.2 - Clicando na porta "15672" acesse o serviço do RabbitMQ (mensageria) da aplicação.
     * 7.2.1 - Realize o login no rabbit para acompanhar o trafego de mensagens utilizando as credencias abaixo: 
     * 7.2.2 - Username: guest
     * 7.2.3 - Password: guest

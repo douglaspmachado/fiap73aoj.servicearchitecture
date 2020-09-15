@@ -51,5 +51,5 @@ Para execução da aplicação sugerimos os seguintes passos:
 
 
 
-### Dados acadêmico
+### Dados acadêmicos
 

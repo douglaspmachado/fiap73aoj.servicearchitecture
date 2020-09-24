@@ -10,6 +10,9 @@ Para construção da aplicação empregamos coneceitos de "Clean Architecture" u
 * Dapper
 * RabbitMQ
 
+![arquitetura_api](https://user-images.githubusercontent.com/17520851/94091247-29969680-fdee-11ea-9210-7a439a3a5888.PNG)
+
+
 ### Execução (Play With Docker)
 
 Para execução da aplicação sugerimos os seguintes passos:

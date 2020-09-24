@@ -43,9 +43,12 @@ Para execução da aplicação sugerimos os seguintes passos:
 ![serviços_up](https://user-images.githubusercontent.com/17520851/93146587-9959a280-f6c5-11ea-9be2-477df6f9106f.PNG)
 
     
-### Dados academicos
+### Dados acadêmicos
 
 Profº TADEU D’ALESSANDRO BARBOSA
+DISCIPLINA: SERVICES ARCHITECTURE / API / MOBILE ARCHITECTURE
+
+
   
   
   
